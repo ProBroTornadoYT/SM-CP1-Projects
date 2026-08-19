@@ -1,4 +1,4 @@
-# comments
+# Shreenayan Mehta hello world
 
 print("good morni'n") #output
 
@@ -12,6 +12,6 @@ name= input("What is your name?: ")
 
 print("You are so smart welcome to class " + name)
 
-food= input("what your food likeing")
+food= input("what your food like")
 
-print("I JUST LOVE "+ food +" So good and tasty like heavnly delight oh and dont get me started on the wonderful textures oohh") 
+print("I JUST LOVE "+ food +" So good and tasty like heavnly delight oh and dont get me started on the wonderful textures!") 

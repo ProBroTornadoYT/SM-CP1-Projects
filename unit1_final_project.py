@@ -1,4 +1,4 @@
-#final project Shreenayan mehta
+#unit1_final_project.py Shreenayan Mehta
 
 name= input("What is your name: ").strip().title()
 

@@ -25,12 +25,12 @@ def mini_game():
 mini_game()
 
 def play_game():
-    secret_number = random.randint(1, 20)
-    max_attempts = 5
+    secret_number = random.randint(1, 100)
+    max_attempts = 20
     attempts = 0
 
     print("Welcome to the Number Guessing Game!")
-    print("I am thinking of a number between 1 and 20.")
+    print("I am thinking of a number between 1 and 100.")
     print(f"You have {max_attempts} attempts to guess it.\n")
 
     while attempts < max_attempts:

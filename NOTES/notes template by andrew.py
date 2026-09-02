@@ -1,5 +1,5 @@
 
-#Andrew Petersen Variable notes till line 73 then folloowed by Shreenayan Mehta
+#Andrew Petersen Variable notes 
 
 variable = "container that holds something"
 lable = "Name of variable, make it named something that makes sense"
@@ -85,6 +85,34 @@ print("(2-1)*3+4%3")
 print("*<- means multiplaction")
 print((2-1)*3+4%3)
 print("|^ correct btw")
+print("Order of Operations (PEMDAS!!)")
+print("")
+print("Assignment Operator")
+num = 2
+print(num)
+
+num = num + 2
+print(num)
+
+num += 2
+print(num)
+
+num //= 2
+print(num)
+
+num %= 2
+print(num)
+
+#An expression is any mathmatical thing.
+
+fav = input("What is your fav number ")
+
+print(f"{float(fav)**2} is {fav} squared")
+
+pi = 3.141592
+
+print(int(pi))
+print(round(pi))
 print("")
 print("")
 print("")
@@ -92,30 +120,4 @@ print("")
 print("")
 print("")
 print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
-print("")
+print("WEEEEE")

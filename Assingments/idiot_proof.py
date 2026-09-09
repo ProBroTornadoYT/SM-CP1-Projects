@@ -26,6 +26,13 @@ while True:
         if not phone_number.isdigit():
             print("Phone number must be a number. Please enter a valid phone number.")
             continue
+        if len(phone_number) != 10:
+            raise Exception("Phone number must be 10 digits long. Please enter a valid phone number. Try again")
+            continue
+        break
+    except ValueError:
+        print("Invalid input. Please enter a valid number for phone number.")
+        
         break
     except ValueError:
         print("Invalid input. Please enter a valid number for phone number.")
@@ -53,3 +60,4 @@ if first_name == "Admin":
 
 if phone_number.startswith("6767676767"):
     print("GET OUT KID GO GIVE THE PHONE TO YOUR MOM STAY OFF THE IPAD")
+

@@ -1,6 +1,6 @@
 import random
 
-ask = print("Type'Heads' or 'Tails' ")
+ask = print("Your  ")
 
 
 flip = random.randint(1,2)

@@ -3,7 +3,7 @@
 grades = [85,90,78,92,88]
 
 total = 0
-count = 4
+count = len(grades)
 
 for grade in grades:
     total = total + grade

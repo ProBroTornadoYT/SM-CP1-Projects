@@ -16,7 +16,7 @@ print("")
 
 while True:
     try:
-        pirates = input("How many pirates on the ship?").strip()
+        pirates = input("How many pirates on the ship? (excluding yondu and Quill)").strip()
         if not pirates.isdigit():
             print("Pirates must be a number")
             continue
@@ -56,7 +56,7 @@ print("")
 print("")
 print("")
 
-peter_money_stolen = round(11/100 * (yondu_money_stolen), 2)
+peter_money_stolen = round(11/100 * (money_after_3_units - yondu_money_stolen), 2)
 print("After youndu's theft peter comes in the dead of the night and takes 11% of the left money which comes upto " + str(peter_money_stolen) + "UNITS!")
 
 #for some little white space
@@ -64,5 +64,20 @@ print("After youndu's theft peter comes in the dead of the night and takes 11% o
 print("")
 print("")
 print("")
+
 # 67 TH line!!!!!!!!!!!!!!!!!!!!!!!
+
+print("THE GREAT DAY OF SPLITTING HAS ARRIVED AND TOTAL PLUDER IS " + str(peter_money_stolen) + "!!! TIME TO SPLIT EACH PERSON GETS:")
+
+remaining_plunder = money_after_3_units - yondu_money_stolen - peter_money_stolen
+
+crew_share = round(remaining_plunder / total_crew, 2)
+print(str(crew_share))
+
+yondus_total_share = round(yondu_money_stolen + crew_share, 2)
+print("Youndu got " + str(yondus_total_share))
+
+peters_total_share = round(peter_money_stolen + crew_share, 2)
+print("Peter got " + str(peters_total_share))
+
 

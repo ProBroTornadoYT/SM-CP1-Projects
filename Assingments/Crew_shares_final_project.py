@@ -4,7 +4,7 @@ import random
 
 #the story
 
-print(" Yondu Udonta and his crew arrive at the Iron Lotus after several weeks of plundering various places around the galaxy. The crew has been in space for nearly six months and they are ready for a night of celebration. Yondu doesn't want to divvy up the plunder just yet, so he gives each crew member other than himself and Peter Quill 3 units and sends them off to the Iron Lotus. After the crew has gone, he and Peter count what's left and decide how to split it up among the crew. Yondu takes 13% of the total. He then gives Peter 11% of what's left. The next morning, Yondu divides the remaining amount evenly among all of the crew, including Yondu and Quill. The crew does not know that Yondu and Quill have already taken a cut.")
+print("Yondu Udonta and his crew arrive at the Iron Lotus after several weeks of plundering various places around the galaxy. The crew has been in space for nearly six months and they are ready for a night of celebration. Yondu doesn't want to divvy up the plunder just yet, so he gives each crew member other than himself and Peter Quill 3 units and sends them off to the Iron Lotus. After the crew has gone, he and Peter count what's left and decide how to split it up among the crew. Yondu takes 13% of the total. He then gives Peter 11% of what's left. The next morning, Yondu divides the remaining amount evenly among all of the crew, including Yondu and Quill. The crew does not know that Yondu and Quill have already taken a cut.")
 
 #for some little white space
 
@@ -64,14 +64,13 @@ print("After youndu's theft peter comes in the dead of the night and takes 11% o
 print("")
 print("")
 print("")
-
 # 67 TH line!!!!!!!!!!!!!!!!!!!!!!!
-
-print("THE GREAT DAY OF SPLITTING HAS ARRIVED AND TOTAL PLUDER IS " + str(peter_money_stolen) + "!!! TIME TO SPLIT EACH PERSON GETS:")
 
 remaining_plunder = money_after_3_units - yondu_money_stolen - peter_money_stolen
 
-crew_share = round(remaining_plunder / total_crew, 2)
+print(f"THE GREAT DAY OF SPLITTING HAS ARRIVED AND TOTAL PLUDER IS {remaining_plunder} !!! TIME TO SPLIT EACH PERSON GETS:")
+
+crew_share = round((remaining_plunder / total_crew) + 3, 2)
 print(str(crew_share))
 
 yondus_total_share = round(yondu_money_stolen + crew_share, 2)
@@ -79,5 +78,4 @@ print("Youndu got " + str(yondus_total_share))
 
 peters_total_share = round(peter_money_stolen + crew_share, 2)
 print("Peter got " + str(peters_total_share))
-
 

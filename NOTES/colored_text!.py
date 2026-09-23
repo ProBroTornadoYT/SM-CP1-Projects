@@ -30,7 +30,7 @@ BOLD = "\033[1m"
 DIM = "\033[2m"
 ITALIC = "\033[3m"
 UNDERLINE = "\033[4m"
-BLINK = "\033[5m"       # Note: Highly inconsistent native terminal support
+BLINK = "\033[5m"       # Note: Highly inconsistent native terminal support (Low risk of working btw(i tested it wont work))
 INVERT = "\033[7m"
 STRIKE = "\033[9m"
 

@@ -12,3 +12,5 @@ if 18 < age:
 
 print(bool(age))
 
+
+

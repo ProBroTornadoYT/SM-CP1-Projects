@@ -51,31 +51,44 @@ def matrix_rainbow_typewriter(text: str, delay: float = 0.04) -> None:
 
 #the place or the software thing
 while True:
-    choice = input("\nType '1' to sign up or '2' to log in: ").strip()
+    choice = input("\nType '1' to sign up\n'2' to log in\n'3' to back\n Insert choice here:  ").strip()
     
     if choice == "1":
-        print("\n--- SIGN UP ---")
-        username = get_username()
-        if username in users:
-            print("Username already exists!")
-            continue
+        print("\n_-_-_SIGN UP_-_-_")
+        # Loop until a new username is found
+        while True:
+            username = get_username()
+            if username in users:
+                print("Username is taken by someone choose another one")
+                continue
+            break
+        
         password = get_password()
         users[username] = password
         matrix_rainbow_typewriter(f"\nAccount created!\nUsername: {username}\n")
         
     elif choice == "2":
-        print("\n--- LOG IN ---")
+        print("\n_-_-_LOG IN_-_-_")
         username = input("Enter your username: ").lower().strip()
         if username not in users:
             print("Username not found. Please sign up first.")
             continue
         
-        password = input("Enter your password: ").strip()
-        if users[username] == password:
-            matrix_rainbow_typewriter("Access Granted.")
-            print(f"Logged in as {username}")
-            break
-        else:
-            print("Wrong password try again")
+        # Loop for password try until wrong
+        while True:
+            password = input("Enter your password (or type 'back' to return to menu): ").strip()
+            if password.lower() == 'back':
+                break
+            elif users[username] == password:
+                matrix_rainbow_typewriter("Access Granted.")
+                print(f"Logged in as {username}")
+                break
+            else:
+                print("Wrong password. Try again.")
+    
+    elif choice == "3":
+        print("Goodbye!")
+        break
+    
     else:
         print("Invalid input")

@@ -1,39 +1,40 @@
-#SM Letter grade assignment
+#SM Letter grade assignment 1
 
 print("Your grade calculator")
 
 print("")
-
-grade1 = int(input("Type your grade: "))
-grade2 = int(input("Type your grade: "))
-grade3 = int(input("Type your grade: "))
-grade4 = int(input("Type your grade: "))
-grade5 = int(input("Type your grade: "))
-grade6 = int(input("Type your grade: "))
-grade7 = int(input("Type your grade: "))
-grade8 = int(input("Type your grade: "))
-grade9 = int(input("Type your grade: "))
-grade10 = int(input("Type your grade: "))
+while True:
+    try:
+        grade1 = float(input("Type your grade: "))
+        if 0 <= grade1 <= 100:
+            break
+        else:
+            print("Please enter a grade between 0 and 100")
+    except ValueError:
+        print("Invalid Input")
 
 if grade1 >= 93:
-    print ("You have a A in grade 1")
-elif grade2 >= 87:
-    print("You have a A-")
-elif grade2 >= 83:
-    print("You have a A-")
-elif grade2 >= 80:
-    print("You have a A-")
-elif grade2 >= 90:
-    print("You have a A-")
-elif grade2 >= 90:
-    print("You have a A-")
-elif grade2 >= 90:
-    print("You have a A-")
-elif grade2 >= 90:
-    print("You have a A-")
-elif grade2 >= 90:
-    print("You have a A-")
-elif grade2 >= 90:
-    print("You have a A-")
-elif grade2 >= 90:
-    print("You have a A-")
+    print (f"You have gotten {grade1}% which means a A")
+elif grade1 >= 90:
+    print(f"You have gotten {grade1}% which means a A-")
+elif grade1 >= 87:
+    print(f"You have gotten {grade1}% which means a B+")
+elif grade1 >= 83:
+    print(f"You have gotten {grade1}% which means a B")
+elif grade1 >= 80:
+    print(f"You have gotten {grade1}% which means a B-")
+elif grade1 >= 77:
+    print(f"You have gotten {grade1}% which means a C+")
+elif grade1 >= 73:
+    print(f"You have gotten {grade1}% which means a C")
+elif grade1 >= 70:
+    print(f"You have gotten {grade1}% which means a C-")
+elif grade1 >= 67:
+    print(f"You have gotten {grade1}% which means a D+")
+elif grade1 >= 63:
+    print(f"You have gotten {grade1}% which means a D")
+elif grade1 >= 60:
+    print(f"You have gotten {grade1}% which means a D-")
+else:
+    print(f"You have gotten {grade1}% which means a F")
+

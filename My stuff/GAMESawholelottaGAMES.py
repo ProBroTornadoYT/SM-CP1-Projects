@@ -20,7 +20,7 @@ BOLD = "\033[1m"
 DIM = "\033[2m"
 ITALIC = "\033[3m"
 
-game = input("Type 1 for truth or dare, Type 2 for love tester, Type 3 for number guessing, Type 4 for impossible rock paper sccisors, type 5 for a madlib game, type 6 for snake game, type 7 for tic-tac-toe ")
+game = input("Type 1 for truth or dare, Type 2 for love tester, Type 3 for number guessing, Type 4 for impossible rock paper sccisors, type 5 for a madlib game, type 6 for snake game, type 7 for tic-tac-toe: ")
 
 
 
@@ -84,7 +84,7 @@ if game == '3':
 if game == '4':
     quit_game = False
     while not quit_game:
-        play = input("Choose one of these MAKE SURE YOU TYPE EXACTLY( ROCK PAPER SCISSORS ): ").strip().upper()
+        play = input("Choose one of these MAKE SURE YOU TYPE EXACTLY ( ROCK PAPER SCISSORS ): ").strip().upper()
         if play == "ROCK":
             print("Computer plays: PAPER \n computer has to say you suck idiot")
         elif play == "PAPER":

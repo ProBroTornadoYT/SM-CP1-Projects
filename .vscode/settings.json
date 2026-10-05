@@ -1,3 +1,8 @@
 {
+<<<<<<< HEAD
     "python.REPL.enableREPLSmartSend": false
+=======
+    "python.REPL.enableREPLSmartSend": false,
+    "python-envs.defaultEnvManager": "ms-python.python:system"
+>>>>>>> fdf100840a4d12e9dbf6c2e66532056bf47d39da
 }

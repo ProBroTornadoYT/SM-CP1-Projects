@@ -1,10 +1,11 @@
-# Install dependencies with: python -m pip install SpeechRecognition PyAudio pyttsx3
-import re
+# Install dependencies automatically or via: python -m pip install SpeechRecognition PyAudio pyttsx3
 import importlib
 import os
 from pathlib import Path
+import re
 import subprocess
 import sys
+import tempfile
 
 
 def load_dependency(module_name, package_name):
@@ -40,13 +41,17 @@ def load_dependency(module_name, package_name):
             raise SystemExit(1) from install_error
 
 
+# Load dependencies
 pyttsx3 = load_dependency("pyttsx3", "pyttsx3")
 sr = load_dependency("speech_recognition", "SpeechRecognition")
 pyaudio = load_dependency("pyaudio", "PyAudio")
 
+# Fix for comtypes cache crash on network drives (UNC paths like \\UCASFS1\...)
+import comtypes.client
+comtypes.client._dir = tempfile.gettempdir()
 
 shopping_list = []
-speaker = pyttsx3.init()
+speaker = pyttsx3.init('sapi5')
 recognizer = sr.Recognizer()
 
 

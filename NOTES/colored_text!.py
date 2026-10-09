@@ -128,6 +128,17 @@ def matrix_rainbow_typewriter(text: str, delay: float = 0.04) -> None:
         
     print(RESET) # Always cleanly exit formatting at line-end
 
+#same thing colorless
+
+def typewriter(text: str, delay: float = 0.04) -> None:
+    """Prints text character by character without color or formatting."""
+    for char in text:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(delay)
+
+    print()
+
 
 def smoothly_simulated_blink(text: str, loop_count: int = 4) -> None:
     """Guaranteed cross-platform blinking text using carriage returns (\r)."""

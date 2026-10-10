@@ -3,7 +3,7 @@ Text to Speech Tutorial - Ready to Run
 Make sure to install required libraries before running:
     pip install pyttsx3 gTTS playsound==1.2.2
 """
-
+''''
 # ==========================================
 # METHOD 1: Offline TTS using 'pyttsx3'
 # ==========================================
@@ -50,12 +50,13 @@ def test_online_tts():
     print("Playing online voice playback...")
     playsound("google_output.mp3")
 
-
+'''''''''
 # ==========================================
 # METHOD 3: OS Native Shortcuts (No installations)
 # ==========================================
 def test_native_tts():
     import sys
+    import os
     print("Playing native OS voice shortcut...")
     
     if sys.platform == "darwin": # macOS
@@ -65,7 +66,7 @@ def test_native_tts():
     else:
         print("Native command line shortcut not supported on Windows without third-party tools.")
 
-
+'''''
 # ==========================================
 # EXECUTION BLOCK
 # Uncomment the function you want to compile and run:
@@ -74,3 +75,4 @@ if __name__ == "__main__":
     test_offline_tts()
     # test_online_tts()
     # test_native_tts()
+'''

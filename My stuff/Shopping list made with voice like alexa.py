@@ -47,36 +47,57 @@ sr = load_dependency("speech_recognition", "SpeechRecognition")
 pyaudio = load_dependency("pyaudio", "PyAudio")
 
 # Fix for comtypes cache crash on network drives (UNC paths like \\UCASFS1\...)
-import comtypes.client
-comtypes.client._dir = tempfile.gettempdir()
+try:
+    import comtypes.client
+except ModuleNotFoundError:
+    comtypes = None
+else:
+    comtypes.client._dir = tempfile.gettempdir()
 
 shopping_list = []
-speaker = pyttsx3.init('sapi5')
+
+# Safe initialization for SAPI5
+try:
+    speaker = pyttsx3.init('sapi5')
+except Exception:
+    speaker = pyttsx3.init()
+
 recognizer = sr.Recognizer()
 
 
 def speak(message):
-    speaker.say(message)
-    speaker.runAndWait()
+    print(f"Assistant: {message}")
+    try:
+        speaker.say(message)
+        speaker.runAndWait()
+    except Exception as e:
+        print(f"[TTS Error]: {e}")
 
 
 def listen(prompt):
     speak(prompt)
-    with sr.Microphone() as microphone:
-        recognizer.adjust_for_ambient_noise(microphone, duration=0.5)
-        try:
-            audio = recognizer.listen(microphone, timeout=6, phrase_time_limit=6)
-        except sr.WaitTimeoutError:
-            speak("I didn't hear anything. Please try again.")
-            return ""
-
     try:
-        return recognizer.recognize_google(audio).lower().strip()
-    except sr.UnknownValueError:
-        speak("Sorry, I didn't understand that.")
-    except sr.RequestError:
-        speak("Speech recognition is unavailable. Please check your internet connection.")
-    return ""
+        with sr.Microphone() as microphone:
+            recognizer.adjust_for_ambient_noise(microphone, duration=0.5)
+            try:
+                audio = recognizer.listen(microphone, timeout=6, phrase_time_limit=6)
+            except sr.WaitTimeoutError:
+                speak("I didn't hear anything. Please try again.")
+                return ""
+
+        try:
+            recognized_text = recognizer.recognize_google(audio).lower().strip()
+            print(f"You said: {recognized_text}")
+            return recognized_text
+        except sr.UnknownValueError:
+            speak("Sorry, I didn't understand that.")
+        except sr.RequestError:
+            speak("Speech recognition is unavailable. Please check your internet connection.")
+        return ""
+    except OSError:
+        print("\n[Error] No default input microphone detected or access is blocked.")
+        speak("Microphone not detected. Please check your Windows sound settings.")
+        return ""
 
 
 def get_item_from_command(command, prefixes):
@@ -129,4 +150,3 @@ while True:
                 speak(f"{removed} removed from your shopping list.")
     else:
         speak("Please say add, remove, show list, or exit.")
-

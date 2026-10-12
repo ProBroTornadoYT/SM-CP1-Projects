@@ -1,4 +1,4 @@
-#GAMES!
+# GAMES!
 
 import random
 import sys
@@ -61,19 +61,16 @@ def run_game_hub():
         print_banner('WELCOME TO THE GAME HUB', MAGENTA)
         print(style(f'Welcome, {user_name}! Pick a game and let the fun begin!', WHITE, BOLD))
         if is_admin:
-            print(style('ADMIN ACCESS: game 14 opens the admin console; type "admin" in number guessing to reveal the answer.', GREEN, BOLD))
+            print(style('ADMIN ACCESS ACTIVE: Type "admin" in number guessing to reveal the answer.', GREEN, BOLD))
 
         game = os.environ.pop('GAME_HUB_SELECTION', None)
         if game is None:
-            choices = "Choose 1 truth or dare, 2 love tester, 3 number guessing, 4 rock paper scissors, 5 madlib, 6 snake, 7 tic-tac-toe, 8 hangman, 9 pong, 10 flappy bird, 11 space invaders, 12 minesweeper, 13 space colony"
-            if is_admin:
-                choices += ', 14 admin console'
+            choices = (
+                "Choose 1 truth or dare, 2 love tester, 3 number guessing, 4 rock paper scissors, "
+                "5 madlib, 6 snake, 7 tic-tac-toe, 8 hangman, 9 pong, 10 flappy bird, "
+                "11 space invaders, 12 minesweeper, 13 space colony, 14 lottery gamble"
+            )
             game = print_prompt(choices + ': ').strip()
-
-        if game == '14' and is_admin:
-            print_banner('ADMIN CONSOLE', GREEN)
-            print(style(f'Welcome, Administrator {user_name}. The admin console grants bonus colony resources.', GREEN, BOLD))
-            game = print_prompt('Choose a game to launch (1-13): ').strip()
 
         if game == '1':
             print_banner('TRUTH OR DARE', RED)
@@ -304,7 +301,7 @@ def run_game_hub():
 
                         for i in range(9):
                             btn = tk.Button(frame, text='', font=('Arial', 20), width=6, height=3,
-                                           command=lambda idx=i: self.on_click(idx))
+                                            command=lambda idx=i: self.on_click(idx))
                             btn.grid(row=i // 3, column=i % 3, padx=2, pady=2)
                             self.buttons.append(btn)
 
@@ -439,7 +436,7 @@ def run_game_hub():
                 if ball_x >= 8 and abs(ball_y - computer_paddle) > 1:
                     player += 1
                     ball_x, ball_y, dx, dy = 4, 4, -1, random.choice([-1, 1])
-                print(style(f'Score You {player} - {computer} Computer', YELLOW, BOLD))
+                print(style(f'Score: You {player} | {computer} Computer', YELLOW, BOLD))
                 for y in range(height):
                     left = '|' if abs(y - paddle) <= 1 else ' '
                     right = '|' if abs(y - computer_paddle) <= 1 else ' '
@@ -613,44 +610,44 @@ def run_game_hub():
                     day += 1
             print(style(f'Colony report: survived {day - 1} days, built {solar - 1} solar upgrades and {turrets} turrets.', GREEN, BOLD))
 
-        elif game == '14' and is_admin:
+        elif game == '14':
             print_banner('LOTTERY GAMBLE', YELLOW)
-            money = 100
-            while True:
+            tokens = 100
+            while tokens > 0:
                 while True:
                     try:
-                        gamble = int(input("Choose your amount to gamble you have $100 if you get within 5 of the number your invest earns times 4 multiplier if you are within 10 of the number you get 2 times multiplier and if you get within 20 you get 1 multipier if you get within 50 of the number you lose half and anything above that is all the invested money lost.\nBut first choose how much money you want to gamble in the lottery: "))
-                        if gamble <= 0 or gamble > money:
-                            print(f"not possible choose between 1 and ${money}.")
+                        gamble = int(input(f"You have {tokens} tokens.\nRules: Within 5 = 4x multiplier | Within 10 = 2x | Within 20 = 1x | Within 50 = lose half | Over 50 = lose all.\nChoose tokens to play: "))
+                        if gamble <= 0 or gamble > tokens:
+                            print(f"Invalid amount! Choose between 1 and {tokens} tokens.")
                             continue
                         break
                     except ValueError:
-                        print("Idk what dat is? try again")
+                        print("Invalid input! Try entering a number.")
 
-                if gamble == money:
-                    all_in_confirmation = input("Are you sure you want to go all in? type 1 for yes and 2 for no: ")
+                if gamble == tokens:
+                    all_in_confirmation = input("Are you sure you want to go all-in? (1 for yes / 2 for no): ").strip()
                     if all_in_confirmation == "2":
                         continue
 
                 while True:
                     try:
-                        choice = int(input("Choose your number (1-100): "))
+                        choice = int(input("Choose your lucky number (1-100): "))
                         if choice < 1 or choice > 100:
-                            print("invalid choose between 1 and 100 idiot")
+                            print("Invalid selection! Choose a number between 1 and 100.")
                             continue
                         break
                     except ValueError:
-                        print("idk what dat is? try again")
+                        print("Invalid input! Try entering a number.")
 
                 number = random.randint(1, 100)
 
                 jackpot = 1
                 while jackpot < number:
                     print(jackpot)
-                    time.sleep(0.1)
+                    time.sleep(0.05)
                     jackpot += 1
 
-                print(f"JACKPOT! The number is . . . {number}!")
+                print(f"JACKPOT! The winning number is . . . {number}!")
 
                 distance = abs(choice - number)
 
@@ -661,42 +658,42 @@ def run_game_hub():
                 elif distance <= 20:
                     multiplier = 1
                 elif distance <= 50:
-                    money -= gamble // 2
+                    tokens -= gamble // 2
                     multiplier = 0
                 else:
-                    money -= gamble
+                    tokens -= gamble
                     multiplier = 0
                     
                 if multiplier > 0:
-                    money += gamble * multiplier
+                    tokens += gamble * multiplier
 
-                print(f"Your number: {choice} | Winning number: {number} | Distance: {distance}")
-                print(f"Money remaining: ${money}")
+                print(f"Your pick: {choice} | Winning number: {number} | Off by: {distance}")
+                print(f"Tokens remaining: {tokens}")
                 print()
+
+                if tokens <= 0:
+                    print(style("You ran out of tokens! Game over.", RED, BOLD))
+                    break
                 
                 play_lottery_again = input("Play lottery again? (yes/no): ").strip().lower()
                 if play_lottery_again not in ('yes', 'y'):
                     break
 
-        elif game == '14' and not is_admin:
-            print(style('Invalid game selection. Please choose 1 through 13.', RED, BOLD))
-            return
-
         else:
-            print(style('Invalid game selection. Please choose 1 through 13.', RED, BOLD))
+            print(style('Invalid game selection. Please choose 1 through 14.', RED, BOLD))
             return
 
         play_again = print_prompt('Play this game again? (yes/no): ').strip().lower()
         if play_again in ('yes', 'y'):
             next_game = game
         else:
-            next_game = print_prompt('Choose your next game (1-13), or Q to quit: ').strip().lower()
+            next_game = print_prompt('Choose your next game (1-14), or Q to quit: ').strip().lower()
             if next_game == 'q':
                 print(style('Thanks for playing!', WHITE, BOLD))
                 return
 
-        if next_game not in {str(number) for number in range(1, 14)}:
-            print(style('Invalid game selection. Please choose 1 through 13.', RED, BOLD))
+        if next_game not in {str(number) for number in range(1, 15)}:
+            print(style('Invalid game selection. Please choose 1 through 14.', RED, BOLD))
             return
 
         os.environ['GAME_HUB_SELECTION'] = next_game

@@ -701,3 +701,4 @@ def run_game_hub():
 
 if __name__ == "__main__":
     run_game_hub()
+

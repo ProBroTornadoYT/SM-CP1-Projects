@@ -7,6 +7,11 @@ YELLOW = '\033[33m'
 BLUE = '\033[34m'
 RESET = '\033[0m'
 
+def clear_terminal():
+    print("\033[H\033[J", end="")
+
+clear_terminal()
+
 def typewriter(text: str, delay: float = 0.01) -> None:
  
     for char in text:
@@ -24,7 +29,7 @@ def typewriter(text: str, delay: float = 0.01) -> None:
             # Backspace 3 times to clear the dots and loop them again
             sys.stdout.write("\b\b\b   \b\b\b") 
             sys.stdout.flush()
-    except KeyboardInterrupt:
+    except after 10 seconds:
         pass
 
     print()
@@ -32,6 +37,18 @@ def typewriter(text: str, delay: float = 0.01) -> None:
 typewriter("Loading")
 
 typewriter(f"{GREEN}-{RED}--------- 10%")
+clear_terminal
 typewriter(f"{GREEN}---{RED}------- 30%")
+clear_terminal
 typewriter(f"{GREEN}------{RED}---- 60%")
-typewriter(f"{GREEN}---{RED}------- 80%")
+clear_terminal
+typewriter(f"{GREEN}--------{RED}-- 80%")
+clear_terminal
+typewriter(f"{GREEN}---------{RED}- 90%")
+clear_terminal
+typewriter(f"{GREEN}---------{RED}- 99%")
+clear_terminal
+typewriter(f"{GREEN}---------- 100%")
+clear_terminal
+typewriter(f"{GREEN}OPENING!")
+clear_terminal

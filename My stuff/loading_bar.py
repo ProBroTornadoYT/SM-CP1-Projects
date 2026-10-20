@@ -1,5 +1,6 @@
 import sys
 import time
+import random
 
 RED = '\033[31m'
 GREEN = '\033[32m'
@@ -12,43 +13,38 @@ def clear_terminal():
 
 clear_terminal()
 
-def typewriter(text: str, delay: float = 0.01) -> None:
+speed = random.uniform(0.05,0.1)
+
+def typewriter(text: str, delay: float = (speed)) -> None:
  
     for char in text:
         sys.stdout.write(char)
         sys.stdout.flush()
         time.sleep(delay)
 
-    try:
-        while True:
-            for char in "...":
-                sys.stdout.write(char)
-                sys.stdout.flush()
-                time.sleep(0.5)  # Speed
-            
-            # Backspace 3 times to clear the dots and loop them again
-            sys.stdout.write("\b\b\b   \b\b\b") 
-            sys.stdout.flush()
-    except after 10 seconds:
-        pass
-
-    print()
-
-typewriter("Loading")
+typewriter("Loading . . . \n")
 
 typewriter(f"{GREEN}-{RED}--------- 10%")
-clear_terminal
+time.sleep(0.2)
+clear_terminal()
 typewriter(f"{GREEN}---{RED}------- 30%")
-clear_terminal
+time.sleep(0.7)
+clear_terminal()
 typewriter(f"{GREEN}------{RED}---- 60%")
-clear_terminal
+time.sleep(0.4)
+clear_terminal()
 typewriter(f"{GREEN}--------{RED}-- 80%")
-clear_terminal
+time.sleep(0.8)
+clear_terminal()
 typewriter(f"{GREEN}---------{RED}- 90%")
-clear_terminal
+time.sleep(0.3)
+clear_terminal()
 typewriter(f"{GREEN}---------{RED}- 99%")
-clear_terminal
+time.sleep(1.5)
+clear_terminal()
 typewriter(f"{GREEN}---------- 100%")
-clear_terminal
+time.sleep(2.0)
+clear_terminal()
 typewriter(f"{GREEN}OPENING!")
-clear_terminal
+time.sleep(0.7)
+clear_terminal()

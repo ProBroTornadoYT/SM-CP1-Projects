@@ -19,7 +19,7 @@ for round_num in range(1, rounds + 1):
         guess = int(input("Guess a number between 1 and 20: "))
         guesses = guesses + 1
 
-        if guess == secret_number:                                       #added ":" defines the loop
+        if guess == secret_number:                                       #added ":" defines the loop SOLVED SYNTAX ERROR    
             print(f"Correct! It took you {guesses} guesses.")
             found = True
         elif guess < secret_number:

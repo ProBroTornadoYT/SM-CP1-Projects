@@ -28,6 +28,13 @@ VIOLET = '\033[38;5;129m'
 PLUM = '\033[38;5;96m'
 MAGENTA = '\033[38;5;201m'
 DARK_GRAY = '\033[38;5;236m'
+BOLD = "\033[1m"
+DIM = "\033[2m"
+ITALIC = "\033[3m"
+UNDERLINE = "\033[4m"
+BLINK = "\033[5m"       # Note: Highly inconsistent native terminal support (Low risk of working btw(i tested it wont work))
+INVERT = "\033[7m"
+STRIKE = "\033[9m"
 
 # Example usage
 print(f"{RED}This text is red!{RESET}")

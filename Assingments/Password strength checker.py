@@ -1,7 +1,12 @@
 # Password Strentgh Checker SM 1
 
+#region Other formatting and stuff
 import sys
 import time
+
+#new thing i learned
+import getpass
+#what this does is is that when the user puts in like the password it turns it invisible
 
 #typewriter function
 def typewriter(text: str, delay: float = 0.04) -> None:
@@ -13,66 +18,25 @@ def typewriter(text: str, delay: float = 0.04) -> None:
 
     print()
 
-# Color codes
+#another new thing i learned region and endregion
+#region Color codes
 RED = '\033[31m'
 GREEN = '\033[32m'
 YELLOW = '\033[33m'
 BLUE = '\033[34m'
 RESET = '\033[0m'
-BRIGHT_BLACK= '\033[90m'
-BRIGHT_RED= '\033[91m'
-BRIGHT_GREEN= '\033[92m'
-BRIGHT_YELLOW= '\033[93m'
-BRIGHT_BLUE= '\033[94m'
-BRIGHT_MAGENTA= '\033[95m'
-BRIGHT_CYAN= '\033[96m'
-BRIGHT_WHITE= '\033[97m'
-BROWN = '\033[38;5;94m'
-MAROON = '\033[38;5;88m'
-CRIMSON = '\033[38;5;160m'
-CORAL = '\033[38;5;209m'
-PEACH = '\033[38;5;216m'
-OLIVE = '\033[38;5;100m'
-LIME_GREEN = '\033[38;5;46m'
-FOREST_GREEN = '\033[38;5;22m'
-AQUA = '\033[38;5;51m'
-SKY_BLUE = '\033[38;5;117m'
-NAVY_BLUE = '\033[38;5;18m'
-INDIGO = '\033[38;5;54m'
-VIOLET = '\033[38;5;129m'
-PLUM = '\033[38;5;96m'
-MAGENTA = '\033[38;5;201m'
-DARK_GRAY = '\033[38;5;236m'
 BOLD = "\033[1m"
-DIM = "\033[2m"
-ITALIC = "\033[3m"
-UNDERLINE = "\033[4m"
-INVERT = "\033[7m"
-STRIKE = "\033[9m"
+#endregion
 
-import random
 
-RED = '\033[31m'
-GREEN = '\033[32m'
-YELLOW = '\033[33m'
-BLUE = '\033[34m'
-RESET = '\033[0m'
-
-#clear terminal functions
+#clear terminal and stuff
 def clear_terminal():
     print("\033[H\033[J", end="")
 
 clear_terminal()
 
-speed = random.uniform(0.001,0.002)
 
-#typewriter function
-def typewriter(text: str, delay: float = (speed)) -> None:
- 
-    for char in text:
-        sys.stdout.write(char)
-        sys.stdout.flush()
-        time.sleep(delay)
+#region loading bar
 
 #Loading bar
 """
@@ -102,12 +66,16 @@ clear_terminal()
 typewriter(f"{GREEN}OPENING!")
 time.sleep(0.7)
 clear_terminal()
-"""
+#endregion
+#endregion
 
-password = input("Enter Password: ")
+#actual code
+
+password = getpass.getpass("Enter Password: ")
 
 strength = 0
 
+#region defining conditions for seeing that all needed things are there or not
 chars = list(password)
 if any(char.islower() for char in chars):
     strength += 1
@@ -126,9 +94,12 @@ if any(char in special_chars for char in chars):
 
 if len(password) >= 8:
     strength += 1
+#endregion
+
 
 final_strength = (strength)*13.4
 
+#region final output telling what is rady
 typewriter(f"{RESET}Your strength Index is: \n")
 typewriter(" ")
 typewriter(str(final_strength))
@@ -149,5 +120,6 @@ if final_strength == 53.6:
     typewriter(f"Password Strength {YELLOW}Could be improved{RESET} try again")
 
 if final_strength == 67:
-    typewriter(f"Password Strength is {GREEN}{BOLD}GREAT!")
+    typewriter(f"Password Strength is {GREEN}{BOLD}GREAT!{RESET}")
+#endregion
 

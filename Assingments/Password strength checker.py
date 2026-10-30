@@ -38,8 +38,6 @@ clear_terminal()
 
 #region loading bar
 
-#Loading bar
-"""
 typewriter("Loading . . . \n")
 
 typewriter(f"{GREEN}-{RED}--------- 10%")
@@ -66,7 +64,6 @@ clear_terminal()
 typewriter(f"{GREEN}OPENING!")
 time.sleep(0.7)
 clear_terminal()
-#endregion
 #endregion
 
 #actual code

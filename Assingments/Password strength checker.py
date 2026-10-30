@@ -3,6 +3,7 @@
 import sys
 import time
 
+#typewriter function
 def typewriter(text: str, delay: float = 0.04) -> None:
     """Prints text character by character without color or formatting."""
     for char in text:
@@ -57,13 +58,15 @@ YELLOW = '\033[33m'
 BLUE = '\033[34m'
 RESET = '\033[0m'
 
+#clear terminal functions
 def clear_terminal():
     print("\033[H\033[J", end="")
 
 clear_terminal()
 
-speed = random.uniform(0.05,0.06)
+speed = random.uniform(0.001,0.002)
 
+#typewriter function
 def typewriter(text: str, delay: float = (speed)) -> None:
  
     for char in text:
@@ -71,6 +74,8 @@ def typewriter(text: str, delay: float = (speed)) -> None:
         sys.stdout.flush()
         time.sleep(delay)
 
+#Loading bar
+"""
 typewriter("Loading . . . \n")
 
 typewriter(f"{GREEN}-{RED}--------- 10%")
@@ -97,7 +102,7 @@ clear_terminal()
 typewriter(f"{GREEN}OPENING!")
 time.sleep(0.7)
 clear_terminal()
-
+"""
 
 password = input("Enter Password: ")
 
@@ -115,7 +120,7 @@ chars = list(password)
 if any(char.isdigit() for char in chars):
     strength += 1
 
-special_chars = ['!','@','#','$','%','^','&','*','(',')','_','+','-','=','[',']','{','}','|',';',':',',','.','<','>','?']
+special_chars = ['!','@','#','$','%','^','&','*','(',')','_','+','-','=','[',']','{','}','|',';',':',',','.','<','>','?','`','~']
 if any(char in special_chars for char in chars):
     strength += 1
 
@@ -125,10 +130,14 @@ if len(password) >= 8:
 final_strength = (strength)*13.4
 
 typewriter(f"{RESET}Your strength Index is: \n")
+typewriter(" ")
 typewriter(str(final_strength))
 
+if final_strength == 0:
+    typewriter(f" Password Strength is {RED}{BOLD}TOO WEAK{RESET} try again")
+
 if final_strength == 13.4:
-    typewriter(f"\nPassword Strength is {RED}{BOLD}TOO WEAK{RESET} try again")
+    typewriter(f" Password Strength is {RED}{BOLD}TOO WEAK{RESET} try again")
 
 if final_strength == 26.8:
     typewriter(f"Password Strength is {RED}{BOLD}Weak try{RESET} again")

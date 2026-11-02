@@ -1,4 +1,4 @@
-# Password Strentgh Checker SM 1
+# Password Strength Checker SM 1
 
 #region Other formatting and stuff
 import sys
@@ -96,7 +96,7 @@ if len(password) >= 8:
 
 final_strength = (strength)*13.4
 
-#region final output telling what is rady
+#region final output telling what is ready
 typewriter(f"{RESET}Your strength Index is: \n")
 typewriter(" ")
 typewriter(str(final_strength))

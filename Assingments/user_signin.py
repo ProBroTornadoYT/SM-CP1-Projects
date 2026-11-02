@@ -15,14 +15,14 @@ users = {}
 
 def get_username():
     username = input("Type your username: ").lower().strip()
-    print("Your username has been converted to lower case for easyness of using next time")
+    print("Your username has been converted to lower case for easiness of using next time")
     print(f"Your username is {username}")
     return username
 
 def get_password():
     password = input("Would you like a random password? type '1' for yes and '2' for no: ").strip()
 
-#Warning the part on how to generate a random code has utilized the use of Artificial Intelligence as a brainstroming tool and not a "writer" as the code has still been written by me.
+#Warning the part on how to generate a random code has utilized the use of Artificial Intelligence as a brainstorming tool and not a "writer" as the code has still been written by me.
     
     if password == "1":
         password = ''.join(random.choices(string.ascii_letters + string.digits, k=12))

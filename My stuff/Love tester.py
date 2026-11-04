@@ -56,8 +56,9 @@ clear_terminal()
 
 person1 = input("Type your first person: ").strip().title()
 person2 = input("Type your second person person: ").strip().title()
-
-love = random.randint(70,120) 
+#region
+love = random.randint(85,120) 
+#endregion
 
 print(f"Looks like {person1} loves {person2} at about {love}% love oooh")
 

@@ -1,4 +1,7 @@
 # SM 1 Factorial Calculator
+
+#region random yap
+
 import math
 import sys
 import time
@@ -23,8 +26,8 @@ def typewriter(text: str, delay: float = 0.04, end: str = "") -> None:
 
     sys.stdout.write(end)
     sys.stdout.flush()
-
-#The banner from the website earlier
+#endregion
+#region The banner from the website earlier
 print(f"""{NAVY_BLUE}{BOLD}
   ____  _                  _____         _         _____          _             _       _      ____      _            _       _                 _   ___  
  / ___|| |__  _ __ ___  __|_   _|__  ___| |__     |  ___|_ _  ___| |_ ___  _ __(_) __ _| |    / ___|__ _| | ___ _   _| | __ _| |_ ___  _ __    / | / _ \ 
@@ -33,7 +36,8 @@ print(f"""{NAVY_BLUE}{BOLD}
  |____/|_| |_|_|  \___|\___||_|\___|\___|_| |_|   |_|  \__,_|\___|\__\___/|_|  |_|\__,_|_|    \____\__,_|_|\___|\__,_|_|\__,_|\__\___/|_|      |_(_)___/ 
                                                                                                                                                                
 """)
-#human made from now on
+#endregion
+#region stupid proofing
 while True:
     try:
         typewriter(f"{AQUA}Enter the number you want a factorial for {RED} {BOLD} WARNING NUMBERS OVER 1558 WILL BREAK YOUR CODE:{RESET}{FOREST_GREEN} ")
@@ -51,9 +55,11 @@ while True:
         continue
 
     break
+#endregion
 
 answer_type = input(f"{BROWN}Quick thing if you want just the direct answer type 1 and if you want the full equation and break your ram by making the computer type 1 x 2 x 3... and so on type 2: ").strip()
 
+#region answer type
 if answer_type == '1':
     answer = math.factorial(number)
     typewriter(f"{AQUA}your simplified direct answer is {answer}{RESET}\n")
@@ -66,3 +72,4 @@ elif answer_type == '2':
 
 else:
     typewriter(f"{RESET}{BRIGHT_RED}{BOLD}Choose a number that is 1 or 2 dont put {answer_type}{RESET}\n")
+#endregion

@@ -1,21 +1,12 @@
-
-# SM, While Loops
-
-import random
 import time
 
-goose = random.randint(1,20)
-duck = 1
-
-while goose > duck:
-    print("duck. . .")
-    time.sleep(1.0)
-    duck += 1
-
-print("GOOSE!")
+timer = int(input("Choose how many seconds of timer you want: "))
 
 count = 1
-while count < 30:
+while count <= timer:
     print(count)
-    time.sleep(.1)
+    time.sleep(1.0)
     count += 1
+
+print("RING!!!!!!!!!!")
+

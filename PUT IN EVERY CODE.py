@@ -62,12 +62,6 @@ clear_terminal()
 
 speed = random.uniform(0.05,0.1)
 
-def typewriter(text: str, delay: float = (speed)) -> None:
- 
-    for char in text:
-        sys.stdout.write(char)
-        sys.stdout.flush()
-        time.sleep(delay)
 
 typewriter("Loading . . . \n")
 

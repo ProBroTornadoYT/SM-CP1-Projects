@@ -1,13 +1,10 @@
 import time
 import random
 
-# Color codes for the terminal
-GREEN = "\033[92m"
-RED = "\033[91m"
-RESET = "\033[0m"  # Stops the color from bleeding into the rest of the terminal
 
-def greet(name):
-    return f"Hello, {name}!"
+
+def help():
+    return f"Hello, there lets just give you a list of commands we offer!\nfirst you can call typewriter() now you can have a typewriter animation on your sentence for example typewriter(Your print statement)\nSecondly you can use clear_terminal() which just clears your terminal\nthirdly you can use loading_bar to have a loading bar!\n"
 
 def typewriter(text):
     """Helper function to print text letter by letter."""
@@ -21,6 +18,10 @@ def clear_terminal():
     print("\033[H\033[J", end="")
 
 def loading_bar():
+    # Color codes for the terminal
+    GREEN = "\033[92m"
+    RED = "\033[91m"
+    RESET = "\033[0m"  # Stops the color from bleeding into the rest of the terminal
     clear_terminal()
     
     typewriter("Loading . . . \n")

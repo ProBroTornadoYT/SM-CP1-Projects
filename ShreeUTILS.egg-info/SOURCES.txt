@@ -1,0 +1,7 @@
+README.md
+ShreeUTILS.py
+pyproject.toml
+ShreeUTILS.egg-info/PKG-INFO
+ShreeUTILS.egg-info/SOURCES.txt
+ShreeUTILS.egg-info/dependency_links.txt
+ShreeUTILS.egg-info/top_level.txt

@@ -51,7 +51,7 @@ def typewriter(text: str, delay: float = (speed)) -> None:
         sys.stdout.write(char)
         sys.stdout.flush()
         time.sleep(delay)
-
+"""
 typewriter("Loading . . . \n")
 
 typewriter(f"{GREEN}-{RED}--------- 10%")
@@ -78,7 +78,7 @@ clear_terminal()
 typewriter(f"{GREEN}OPENING!")
 time.sleep(0.7)
 clear_terminal()
-
+"""
 
 user_name = 'Player'
 is_admin = False

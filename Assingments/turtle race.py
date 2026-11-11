@@ -79,3 +79,4 @@ while is_racing:
         is_racing = False
 
 turtle.done()
+

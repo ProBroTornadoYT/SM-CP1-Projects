@@ -15,5 +15,7 @@ while count <= total:
     count += 1
     
 
-print("RING!!!!!!!!!!")
+from beepy import beep
+
+beep(sound="ping")
 

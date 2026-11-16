@@ -1,155 +1,70 @@
 import random
 
+health = defense = base_defense = atk_bonus = dmg_die = dmg_bonus = 0
+wolf_hp, wolf_def = 25, 12
+name = ""
 
+def user_turn():
+    global health, defense, wolf_hp
+    defense = base_defense
+    choice = input("\n1.Attack 2.Wild(+4dmg,-2def) 3.Defend(+4def) 4.Heal(+9hp): ")
+    if choice == "1" and random.randint(1, 20) + atk_bonus > wolf_def:
+        wolf_hp -= random.randint(1, dmg_die) + dmg_bonus
+        print("Hit!")
+    elif choice == "2":
+        defense -= 2
+        if random.randint(1, 20) + atk_bonus > wolf_def:
+            wolf_hp -= random.randint(1, dmg_die) + dmg_bonus + 4
+            print("Wild Hit!")
+        else:
+            print("Missed!")
+    elif choice == "3":
+        defense += 4
+        print("Defending!")
+    elif choice == "4":
+        health += 9
+        print("Healed!")
+    else:
+        print("Missed / Turn ends!")
+    print(f"HP -> {name}: {health} | Wolf: {wolf_hp}")
+
+def monster_turn():
+    global health
+    print("\nDire Wolf attacks!")
+    if random.randint(1, 20) + 4 > defense:
+        health -= random.randint(1, 6) + 3
+        print("Wolf hits you!")
+    else:
+        print("Wolf misses!")
+    print(f"HP -> {name}: {health} | Wolf: {wolf_hp}")
 
 def main():
-    print("Welcome to training! First I need to know some things about you!")
+    global name, health, base_defense, defense, atk_bonus, dmg_die, dmg_bonus
     name = input("What is your name?: ")
-    
     while True:
-        warrior = input(f"\nWhat class of fighter will you be {name}?\n1 if you are a Fighter\n2 if you are a Mage\n3 if you are a Rogue\nChoose your number: ")
-        
-        #selects who goes first (VERY random for no unfairly)
-        first_turn = random.randint(1,100000000000000)
-        
-        if first_turn == 437628346227:
-            continue
-        else:
-            print("Dire wolf ambushes you and you die on hit.\nThank you!")
-        
-        if warrior == "1":
-            print("Great, here are your stats!\nHealth: 30\nDefense: 14\nAttack: D20 + 3\nDamage: D8 + 4")
-            battle_warrior_1()
+        w = input("1.Fighter 2.Mage 3.Rogue: ")
+        if w == "1":
+            health, base_defense, atk_bonus, dmg_die, dmg_bonus = 30, 14, 3, 8, 4
             break
-        elif warrior == "2":
-            print("Great, here are your stats!\nHealth: 20\nDefense: 11\nAttack: D20 + 5\nDamage: D10 + 4")
-            battle_warrior_2()
+        elif w == "2":
+            health, base_defense, atk_bonus, dmg_die, dmg_bonus = 20, 11, 5, 10, 4
             break
-        elif warrior == "3":
-            print("Great, here are your stats!\nHealth: 25\nDefense: 13\nAttack: D20 + 4\nDamage: D6 + 5")
-            battle_warrior_3()
+        elif w == "3":
+            health, base_defense, atk_bonus, dmg_die, dmg_bonus = 25, 13, 4, 6, 5
             break
+        print("INVALID INPUT")
+    defense = base_defense
+    print(f"Stats -> HP:{health} Def:{defense} Atk:D20+{atk_bonus} Dmg:D{dmg_die}+{dmg_bonus}")
+    print("A Dire Wolf ambushes you! Defeat it before your HP hits 0.")
+    turn = random.choice(["user", "monster"])
+    print(f"{name if turn == 'user' else 'Dire Wolf'} moves first!")
+    while health > 0 and wolf_hp > 0:
+        if turn == "user":
+            user_turn()
+            turn = "monster"
         else:
-            print("INVALID INPUT")
-
-#region battle type for each warrior
-
-def battle_warrior_1():
-    opdamage = random.randint(1,20)
-    totalopdamage = 0
-    totalopdamage = opdamage + 3
-    
-    
-    health = 30
-    
-    wild_attack_player_damage = random.randint(20,500)
-    
-    wild_attack_damage = totalopdamage * 2
-    
-    
-    attack = int(input(f"You are being attacked by a dire wolf!\nYou move first!\n\nWhat do you do?\n1. Normal Attack does {totalopdamage} damage\n2. Wild Attack (you can double the damage but you will also take damage) details: you take {wild_attack_player_damage} the wolf takes {wild_attack_damage}\n3. Drink a healing potion (get 9 health)\n4. Flee (50% chance of surviving):\n "))
-
-    if attack == 1:
-        wolf_damage = random.randint(500,10000)
-        print(f"You attacked the dire wolf you did {totalopdamage} but the wolf did {wolf_damage}")
-        if wolf_damage >= 30:
-            print("You die! wolf win")
-
-    if attack == 2:
-        print(f"You did the wild attack damage and dealt {wild_attack_damage} and you got {wild_attack_player_damage} damage")
-        if wild_attack_player_damage >= 30:
-            print("You die! wolf win")
-        else:
-            print("YOU WIN! somehow...")
-
-    if attack == 3:
-        new_health = health + 9
-        print(f"You gained {new_health}")
-        print(f"But the dire wolf attacked you and did {totalopdamage} damage to you so you die")
-        
-    if attack == 4:
-        escape_chance = random.randint(1,2)
-        if escape_chance == 1:
-            print("The wolf caught upto you and you died!")
-        if escape_chance == 2:
-            print("You escaped! but you ran too fast and headbutted into a tree you die!")
-
-
-def battle_warrior_2():
-
-    opdamage = random.randint(1,20)
-    totalopdamage = 0
-    totalopdamage = opdamage + 5
-    
-    
-    health = 20
-    
-    wild_attack_player_damage = random.randint(20,500)
-    
-    wild_attack_damage = totalopdamage * 2
-    
-    
-    attack = input(f"You are being attacked by a dire wolf!\nYou move first!\n\nWhat do you do?\n1. Normal Attack does {totalopdamage} damage\n2. Wild Attack (you can double the damage but you will also take damage) details: you take {wild_attack_player_damage} the wolf takes {wild_attack_damage}\n3. Drink a healing potion (get 9 health)\n4. Flee (50% chance of surviving): ")
-    if attack == 1:
-        wolf_damage = random.randint(500,10000)
-        print(f"You attacked the dire wolf you did {totalopdamage} but the wolf did {wolf_damage}")
-        if wolf_damage >= 30:
-            print("You die! wolf win")
-    if attack == 2:
-        print(f"You did the wild attack damage and dealt {wild_attack_damage} and you got {wild_attack_player_damage} damage")
-        if wild_attack_player_damage >= 30:
-            print("You die! wolf win")
-        else:
-            print("YOU WIN! somehow...")
-    if attack == 3:
-        new_health = health + 9
-        print(f"You gained {new_health}")
-        print(f"But the dire wolf attacked you and did {totalopdamage} damage to you so you die")
-    if attack == 4:
-        escape_chance = random.randint(1,2)
-        if escape_chance == 1:
-            print("The wolf caught upto you and you died!")
-        if escape_chance == 2:
-            print("You escaped! but you ran too fast and headbutted into a tree you die!")
-
-
-def battle_warrior_3():
-    opdamage = random.randint(1,20)
-    totalopdamage = 0
-    totalopdamage = opdamage + 4
-    
-    
-    health = 25
-    
-    wild_attack_player_damage = random.randint(20,500)
-    
-    wild_attack_damage = totalopdamage * 2
-    
-    
-    attack = input(f"You are being attacked by a dire wolf!\nYou move first!\n\nWhat do you do?\n1. Normal Attack does {totalopdamage} damage\n2. Wild Attack (you can double the damage but you will also take damage) details: you take {wild_attack_player_damage} the wolf takes {wild_attack_damage}\n3. Drink a healing potion (get 9 health)\n4. Flee (50% chance of surviving): ")
-    if attack == 1:
-        wolf_damage = random.randint(500,10000)
-        print(f"You attacked the dire wolf you did {totalopdamage} but the wolf did {wolf_damage}")
-        if wolf_damage >= 30:
-            print("You die! wolf win")
-    if attack == 2:
-        print(f"You did the wild attack damage and dealt {wild_attack_damage} and you got {wild_attack_player_damage} damage")
-        if wild_attack_player_damage >= 30:
-            print("You die! wolf win")
-        else:
-            print("YOU WIN! somehow...")
-    if attack == 3:
-        new_health = health + 9
-        print(f"You gained {new_health}")
-        print(f"But the dire wolf attacked you and did {totalopdamage} damage to you so you die")
-    if attack == 4:
-        escape_chance = random.randint(1,2)
-        if escape_chance == 1:
-            print("The wolf caught upto you and you died!")
-        if escape_chance == 2:
-            print("You escaped! but you ran too fast and headbutted into a tree you die!")
-
-#endregion
+            monster_turn()
+            turn = "user"
+    print(f"Winner: {name if health > 0 else 'Dire Wolf'}!")
 
 main()
-

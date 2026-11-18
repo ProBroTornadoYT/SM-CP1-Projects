@@ -102,11 +102,10 @@ def get_valid_item(prompt_text, allowed_categories):
 
 def take_order():
   order = []
-  order.append(get_valid_item("\nSelect a Drink: ", ["Drink"]))
-  order.append(get_valid_item("\nSelect a Main Course (burger or burritoritos): ", ["burger", "burritoritos"]))
-  order.append(get_valid_item("\nSelect your 1st Side Dish: ", ["sides"]))
-  order.append(get_valid_item("\nSelect your 2nd Side Dish: ", ["sides"]))
-
+  order.append(get_valid_item("\nSelect A Drink: ", ["Drink"]))
+  order.append(get_valid_item("\nSelect A Main Course (From burger and burrito menu): ", ["Burger", "Burritoritos"]))
+  order.append(get_valid_item("\nSelect Your 1st Side Dish: ", ["Sides"]))
+  order.append(get_valid_item("\nSelect Your 2nd Side Dish: ", ["Sides"]))
   #placing order
   while True:
     choice = input("\nWhat else do you want? (type 'done' to finish): ")
@@ -127,7 +126,8 @@ def take_order():
 
 #region for the final order Confirmation and total calculation
 def confirm_and_pay(order):
-  confirmation = input(f"\nYour order: {order}\n\nWould you like to continue type 1 for yes and 0 for no: ")
+  clean_order = ", ".join(order)
+  confirmation = input(f"\nYour order: {clean_order}\n\nWould you like to continue type 1 for yes and 0 for no: ")
 
   if confirmation == "1":
     total = 0
@@ -145,10 +145,11 @@ def confirm_and_pay(order):
       except ValueError:
         print("Invalid input! Please enter a whole number for the tip.")
     
-    print(f"Tax is {tax}")
-    print(f"Tip is {tip}")
-    totaltotal = total + tax + tip
-    print(f"Total: ${totaltotal}")
+    print(f"Tax is {tax:.2f}")
+    print(f"Tip is {tip:.2f}")
+    total_total = round(total + tax + tip, 2)
+    print(f"Total: ${total_total:.2f}")
+
   elif confirmation == "0":
     order.clear()
     print("Order canceled. but you didn't have to do this you could have bought please just try again bro come'on you can do this please buy from us thats how we pay our rent")

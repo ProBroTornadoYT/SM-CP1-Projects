@@ -11,11 +11,10 @@ total = minutes + runtime + hours
 count = 1
 while count <= total:
     print(count)
-    time.sleep(0.001)
+    time.sleep(1.0)
     count += 1
     
 
-from beepy import beep
+print("RING!")
 
-beep(sound="ping")
 

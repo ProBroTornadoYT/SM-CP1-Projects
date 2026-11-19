@@ -23,7 +23,7 @@ def typewriter(text: str, delay: float = (speed)) -> None:
         sys.stdout.flush()
         time.sleep(delay)
 
-typewriter("Loading . . . \n")
+"""typewriter("Loading . . . \n")
 
 typewriter(f"{GREEN}-{RED}--------- 10%")
 time.sleep(0.2)
@@ -48,7 +48,7 @@ time.sleep(2.0)
 clear_terminal()
 typewriter(f"{GREEN}OPENING!")
 time.sleep(0.7)
-clear_terminal()
+clear_terminal()"""
 
 
 money = 100
